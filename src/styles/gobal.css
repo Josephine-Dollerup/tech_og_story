@@ -60,3 +60,99 @@ select,
   appearance: base-select;
 }
 /* -- slut reset */
+
+/* Farver */
+:root {
+  --baggrundsfarve: #f8f7f1;
+  --brødtekst-farve: #313030;
+  --neon-grøn-farve: #b8f569;
+  --disco-950-farve: #6d003e;
+  --pink-salmon-lyserød: #ff8d9d;
+}
+
+/******* Generelt *******/
+
+/* Gradienterb bagrund */
+.gradient_pink-salmon-lyserød/baggrundsfarve {
+  background-image: linear-gradient(180deg, var(--pink-salmon-lyserød), var(--baggrundsfarve));
+}
+.gradient_pink-salmon-lyserød/--disco-950-farve {
+  background-image: linear-gradient(180deg, var(--pink-salmon-lyserød), var(--disco-950-farve));
+}
+.gradient_baggrundsfarve/--disco-950-farve {
+  background-image: linear-gradient(180deg, var(--baggrundsfarve), var(--disco-950-farve));
+}
+.forside_baggrund-footer {
+  background-image: linear-gradient(180deg, var(--baggrundsfarve), var(--pink-salmon-lyserød), var(--disco-950-farve));
+}
+.info_bagrundsfarve {
+  background-image: linear-gradient(180deg, var(--neon-grøn-farve), var(--baggrundsfarve), var(--disco-950-farve));
+}
+body {
+  background-color: var(--baggrundsfarve);
+}
+
+/* Mobil */
+
+h1 {
+  font-size: 100px;
+  font-weight: bold;
+  line-height: 120%;
+}
+h2 {
+  font-size: 100px;
+  font-weight: bold;
+  line-height: 120%;
+}
+.h2_special_lyserød {
+  font-size: 200px;
+  font-weight: bold;
+  line-height: 120%;
+}
+.h2_special_grøn {
+  font-size: 180px;
+  font-weight: bold;
+  line-height: 120%;
+}
+/* Skal bruges til herotekst på forside og detailview (udstyr)*/
+
+h3 {
+  font-size: 70px;
+  font-weight: bold;
+  line-height: 120%;
+}
+h4 {
+  font-size: 26px;
+  font-weight: italic;
+  line-height: 120%;
+}
+p {
+  color: var(--brødtekst-farve);
+}
+
+/* Desktop */
+@media (min-width: 1000px) {
+  h1 {
+    font-size: 150px;
+    font-weight: bold;
+    line-height: 120%;
+  }
+  h2 {
+    font-size: 100px;
+    font-weight: bold;
+    line-height: 120%;
+  }
+  h3 {
+    font-size: 70px;
+    font-weight: bold;
+    line-height: 120%;
+  }
+  h4 {
+    font-size: 26px;
+    font-weight: italic;
+    line-height: 120%;
+  }
+  p {
+    color: var(--brødtekst-farve);
+  }
+}
