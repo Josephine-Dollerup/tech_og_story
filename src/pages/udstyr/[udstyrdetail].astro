@@ -1,0 +1,36 @@
+---
+export async function getStaticPaths() {
+ const apiurl = "https://hycvaeerhjimzwdnycyq.supabase.co/rest/v1/";
+//Basis-URL'en til vores Supabase-database. URL'en bruges som start-adresse i både udstyrResponse og kontaktResponse.
+
+const udstyrTableName = "Udstyr";
+
+
+const key = "sb_publishable_ci0x6ZnxAsDcDBjvVDKdXA_dC-IEzLE"
+// Vores api key som vi har fået fra supabase.
+
+const options = {
+	headers: {
+		apikey: key
+	}
+}
+
+const udstyrResponse = await fetch(apiurl + udstyrTableName, options);
+const udstyrData = await udstyrResponse.json();
+
+
+console.log("udstyrData", udstyrData);
+
+
+  return udstyrData.map((post) => {
+    return {
+      params: { udstyrdetail: post.slug },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+---
+
+<h1>{post.name}</h1>

@@ -1,0 +1,57 @@
+---
+import Detailview from "../componenter/Detailview.astro";
+const apiurl = "https://hycvaeerhjimzwdnycyq.supabase.co/rest/v1/";
+//Basis-URL'en til vores Supabase-database. URL'en bruges som start-adresse i både udstyrResponse og kontaktResponse.
+
+const udstyrTableName = "Udstyr";
+const kontaktTableName = "kontakt";
+// Vi har to tabeller og derfor laver i to variabler. 
+
+const key = "sb_publishable_ci0x6ZnxAsDcDBjvVDKdXA_dC-IEzLE"
+// Vores api key som vi har fået fra supabase.
+
+const options = {
+	headers: {
+		apikey: key
+	}
+}
+
+const udstyrResponse = await fetch(apiurl + udstyrTableName, options);
+const udstyrData = await udstyrResponse.json();
+
+const kontaktResponse = await fetch(apiurl + kontaktTableName, options);
+const kontaktData = await kontaktResponse.json();
+
+console.log("udstyrData", udstyrData);
+console.log("kontaktData", kontaktData);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<header>
+			<h1>Velkommen til Tech and Story Lab</h1>
+		</header>
+        <section>   
+			<h2>Detailview</h2>
+            <p>Her kan du lære om vores udstyr, samt hvem fra Tech and Story Lab som kan hjælpe dig</p>
+            
+             <div>
+                {
+                kontaktData.map((data) => {
+                    return <Detailview {data} />
+                })
+                }
+            </div>
+            
+        </section>
+   		
+	</body>
+</html>
